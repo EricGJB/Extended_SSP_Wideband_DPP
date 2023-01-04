@@ -57,7 +57,7 @@ for i in range(num_samples):
         taus_cluster = np.maximum(taus_cluster,mean_tau-2*DS)
         taus_cluster = np.minimum(taus_cluster, mean_tau + 2 * DS)
         taus_cluster = np.maximum(taus_cluster, 0)
-        taus_cluster = np.maximum(taus_cluster, tau_max)
+        taus_cluster = np.minimum(taus_cluster, tau_max)
         taus[nc*num_subpaths:(nc+1)*num_subpaths] = taus_cluster
 
     for n in range(num_sc):
