@@ -12,7 +12,7 @@ num_antenna_bs, num_antenna_ue, num_sc, num_samples, num_clusters = 256, 4, 128,
 
 AS = 5
 b_angle = np.sqrt(AS**2/2) # the variance of Laplace distribution is 2b^2
-DS = 1*1e-9
+DS = 0.06*1e-9
 b_delay = np.sqrt(DS**2/2)
 
 eta = W / num_sc
