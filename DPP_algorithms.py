@@ -25,7 +25,7 @@ rou_dB = 10 # SNR in dB
 rou = 10**(rou_dB/10) # linear SNR
 
 # load testing channel samples
-num_samples = 2
+num_samples = 200
 dataset = io.loadmat('./data/channel_%dclusters_%dNt_%dNr_%dscs_%dAS.mat'%(num_clusters, num_antenna_bs, num_antenna_ue, num_sc, AS))
 H_list_true = dataset['H_list'][:num_samples]
 
@@ -718,10 +718,11 @@ print('Performance of LCE-SSP: %.4f\n'%np.mean(performance_list_SSP_peak_finder_
 
 #%% alternative optimization-based algorithm, based on Linglong dai's paper
 # TTD's phases could be proportional to the RF or baseband subcarriers' frequencies
-max_delay = (num_antenna_bs - 1) / (2 * fc) 
+max_delay = num_antenna_bs/fc
+# max_delay = (num_antenna_bs - 1) / (2 * fc) 
 # max_delay = num_antenna_bs/fc
 # max_delay = 1/eta/2 # 整数倍的情况下, 可以保证FFT based计算结果和非FFD based一模一样
-grids = 256
+grids = 256*4
 num_max_iter = 20
 
 FFT_based = True
